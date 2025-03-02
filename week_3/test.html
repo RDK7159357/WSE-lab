@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #input {
+            width: 100%;
+        }
+
+        button:enabled {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed;
+        }
+        button:hover{
+            scale: 1.1;
+        }
+        #terms:checked + span {
+            color: green;
+        }
+        #terms:checked + span {
+            color : red;
+        }
+        #userName + span {
+            color: red;
+        }
+
+        #userName:focus + span {
+            color: green;
+        }
+
+
+        </style>
+</head>
+
+<body>
+    <h1>
+        Register User
+    </h1>
+    <dl>
+        <dt>
+            <dd>
+                <input id="first" type="text" value="First Name" readonly>
+            </dd>
+        </dt>
+    </dl>
+    <button disabled>Register</button>
+    <fieldset>
+        <legend>Terms and conditions</legend>
+        <h4>Terms of Services</h4>
+        <input type="checkbox" id="terms"><span>I Accept</span>
+      </fieldset>
+
+      <h1>Register User</h1>
+  <dl>
+    <dt>User Namr</dt>
+    <dd><input type="text" placeholder="Name in Block Letters" id="userName"> 
+      <span>Name In Block Letters Only</span>
+    </dd>    
+  </dl>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+initial-scale=1.0"
+    />
+    <title>Student Registration Form</title>
+  </head>
+  <style>
+    marquee {
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+  <body>
+    <fieldset>
+      <h1>IARE</h1>
+      <h3 style="color: rgb(241, 132, 132)">
+        INSTITUTE OF
+        <br />
+        AERONAUTICAL ENGINEERING COLLEGE
+      </h3>
+      <img
+        src="../public/assets/images/iare.jpg"
+        width="100px"
+        height="100px"
+      />
+      <img
+        src="../public/assets/images/iare.jpg"
+        width="100px"
+        height="100px"
+        align="right"
+      />
+      <hr />
+      <marquee
+        scrollamount="10"
+        onmouseover="this.stop()"
+        onmouseout="this.start()"
+        >Admission Form &nbsp;&nbsp;&nbsp;&nbsp;Registration Form</marquee
+      >
+      <hr />
+      <h2 align="center">Admission Form</h2>
+      <fieldset>
+        <legend>Student Details</legend>
+        <form>
+          <table>
+            <tr>
+              <td>First Name</td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="First
+Name"
+                />
+              </td>
+              <td>Last Name</td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Last
+Name"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Father Name</td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Father
+Name"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Postal Address</td>
+              <td><input type="text" /></td>
+            </tr>
+            <tr>
+              <td>Permanant Address</td>
+              <td><input type="text" /></td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td><input type="radio" name="gender" value="male" />Male</td>
+              <td>
+                <input type="radio" name="gender" value="female" />Female
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="transgender"
+                />Transgender
+              </td>
+            </tr>
+            <tr>
+              <td>Course</td>
+              <td>
+                <select name="course">
+                  <option value="cse">CSE</option>
+                  <option value="cseaill">CSE AI ML</option>
+                  <option value="cseds">CSE DS</option>
+                  <option value="it">IT</option>
+                  <option value="ece">ECE</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>State</td>
+              <td>
+                <select name="">
+                  <option value="">Telengana</option>
+                  <option value="">Andhra Pradesh</option>
+                  <option value="">Tamilnadu</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><input type="email" placeholder="Email_Address" /></td>
+            </tr>
+            <tr>
+              <td>DOB</td>
+              <td><input type="date" /></td>
+            </tr>
+            <tr>
+              <td>Mobile_Number</td>
+              <td>
+                <input
+                  type="tel"
+                  placeholder="Mobile
+Number"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>10 <sup>th</sup> Certificate</td>
+              <td><input type="file" /></td>
+            </tr>
+            <tr>
+              <td><input type="reset" /></td>
+              <td><button>Submit</button></td>
+            </tr>
+          </table>
+        </form>
+      </fieldset>
+      <hr />
+      <h3>Declaration:</h3>
+      <p>
+        I do here by declare that above details which i have filled are correct
+        and to the best of mt knowledge
+      </p>
+      <input type="checkbox" /> I Agree
+      <h4 align="right">Signature of the candidate</h4>
+    </fieldset>
+  </body>
+</html>

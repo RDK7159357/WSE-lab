@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+</head>
+<body>
+    <div align="center">
+        <form>
+            <h1>Reservation Form</h1>
+            <dl>
+                <dt>
+                    <label for="fullName">Full Name</label>
+                </dt>
+                <dd>
+                    <input type="text" id="fullName" name="fullName" placeholder="First name Last name" required>
+                </dd>
+
+                <dt>
+                    <label for="email">Email</label>
+                </dt>
+                <dd>
+                    <input type="email" id="email" name="email" placeholder="abc@gmail.com" required>
+                </dd>
+
+                <dt>
+                    <label for="mobile">Mobile</label>
+                </dt>
+                <dd>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                </dd>
+
+                <dt>Select Your Package</dt>
+                <dd>
+                    <select name="package" id="package">
+                        <option value="goa">Goa</option>
+                        <option value="ratnagiri">Ratnagiri</option>
+                        <option value="talakona">Talakona</option>
+                    </select>
+                </dd>
+
+                <dt>
+                    <label for="arrivalDate">Arrival Date</label>
+                </dt>
+                <dd>
+                    <input type="date" id="arrivalDate" name="arrivalDate" required>
+                </dd>
+
+                <dt>
+                    <label for="persons">Number of Persons</label>
+                </dt>
+                <dd>
+                    <input type="number" id="persons" name="persons" min="1" max="5" required>
+                </dd>
+
+                <dt>What do you want</dt>
+                <dd>
+                    <label><input type="checkbox" name="services" value="boarding"> Boarding</label><br>
+                    <label><input type="checkbox" name="services" value="food"> Food</label><br>
+                    <label><input type="checkbox" name="services" value="sightseeing"> Sightseeing</label>
+                </dd>
+
+                <dt>
+                    <label for="discount">Discount Coupon Code</label>
+                </dt>
+                <dd>
+                    <input type="text" id="discount" name="discount" placeholder="Enter code">
+                </dd>
+
+                <dt>Terms & Conditions</dt>
+                <dd>
+                    <label><input type="radio" name="terms" value="agree" required> Agree</label><br>
+                    <label><input type="radio" name="terms" value="disagree"> Disagree</label>
+                </dd>
+            </dl>
+
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
