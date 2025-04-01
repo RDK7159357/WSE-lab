@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .item {
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 5px;
+      width: 50px;
+      text-align: center;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    button {
+      padding: 10px;
+      font-size: 1em;
+      margin: 10px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+  </style>
+  <script>
+    let cartTotal = 0;
+
+    function validateQuantity() {
+      let quantityInput = document.getElementById("quantity");
+      let quantityError = document.getElementById("quantityError");
+      let addToCartBtn = document.getElementById("addToCart");
+      let value = quantityInput.value;
+
+      if (isNaN(value) || value < 1 || value > 10) {
+        quantityError.innerText = "Invalid quantity!";
+        addToCartBtn.disabled = true;
+      } else {
+        quantityError.innerText = "";
+        addToCartBtn.disabled = false;
+      }
+    }
+
+    function addToCart() {
+      let quantity = parseInt(document.getElementById("quantity").value);
+      let pricePerItem = 20; // Assume each item costs $20
+      cartTotal += quantity * pricePerItem;
+
+      document.getElementById("cartTotal").innerText = "Total: $" + cartTotal;
+      document.getElementById("checkout").disabled = cartTotal === 0;
+    }
+  </script>
+</head>
+<body>
+  <h1>Shopping Cart</h1>
+
+  <div class="item">
+    <p>Item: Cool Gadget - $20 each</p>
+    <label for="quantity">Quantity (1-10):</label>
+    <input type="text" id="quantity" oninput="validateQuantity()">
+    <span class="error" id="quantityError"></span>
+    <button id="addToCart" onclick="addToCart()" disabled>Add to Cart</button>
+  </div>
+
+  <h2 id="cartTotal">Total: $0</h2>
+  <button id="checkout" disabled>Checkout</button>
+</body>
+</html>

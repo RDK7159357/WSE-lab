@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VIP Club Login</title>
+  <style>
+    /* Styles for input highlighting and error messages */
+    .highlight {
+      border: 2px solid blue;
+    }
+    .error {
+      color: red;
+    }
+    .caps-warning {
+      color: orange;
+      font-size: 0.9em;
+      margin-left: 10px;
+    }
+  </style>
+  <script>
+    // Function to add highlight on focus
+    function highlightField(field) {
+      field.classList.add('highlight');
+    }
+
+    // Function to remove highlight on blur
+    function removeHighlight(field) {
+      field.classList.remove('highlight');
+    }
+
+    // Function to check if Caps Lock is on (works on keyup events)
+    function checkCaps(event) {
+      var capsWarning = document.getElementById("capsWarning");
+      // The getModifierState method returns true if CapsLock is active.
+      if (event.getModifierState && event.getModifierState('CapsLock')) {
+        capsWarning.style.display = 'inline';
+      } else {
+        capsWarning.style.display = 'none';
+      }
+    }
+
+    // Function to validate login inputs when clicking the "Login" button
+    function validateLogin() {
+      // Get values from the form fields
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var message = document.getElementById("message");
+
+      // Clear any previous messages
+      message.innerHTML = "";
+      var valid = true;
+
+      // Validate username: check if empty
+      if (username.trim() === "") {
+        message.innerHTML += "<p class='error'>Username is empty.</p>";
+        valid = false;
+      }
+      // Validate password: must be at least 6 characters
+      if (password.length < 6) {
+        message.innerHTML += "<p class='error'>Password must be at least 6 characters.</p>";
+        valid = false;
+      }
+
+      // If basic validation passes, check credentials
+      // (For demonstration, assume the correct username is "vipuser" and the correct password is "secret123")
+      if (valid) {
+        if (username === "vipuser" && password === "secret123") {
+          message.innerHTML = "<p style='color:green;'>Access Granted!</p>";
+        } else {
+          message.innerHTML = "<p class='error'>Invalid credentials.</p>";
+        }
+      }
+      // Prevent form submission to avoid page reload
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <h1>VIP Club Login</h1>
+  <form onsubmit="return validateLogin();">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"
+           onfocus="highlightField(this)" onblur="removeHighlight(this)">
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"
+           onfocus="highlightField(this)" onblur="removeHighlight(this)"
+           onkeyup="checkCaps(event)">
+    <span id="capsWarning" class="caps-warning" style="display:none;">Caps Lock is ON!</span>
+    <br><br>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Div to display messages -->
+  <div id="message"></div>
+</body>
+</html>

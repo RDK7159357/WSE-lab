@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lucky Draw Game</title>
+  <style>
+    /* Basic styling for the game */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      padding: 5px;
+      font-size: 1em;
+      width: 60px;
+      text-align: center;
+    }
+    button {
+      padding: 5px 10px;
+      font-size: 1em;
+      margin-left: 10px;
+    }
+    .message {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
+  <!-- Include a lightweight confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    function checkWinner() {
+      const inputField = document.getElementById("numberInput");
+      const messageDiv = document.getElementById("message");
+      let value = inputField.value;
+      
+      // Clear any previous message
+      messageDiv.innerHTML = "";
+
+      // Validate that the input is a number
+      let number = Number(value);
+      if (isNaN(number)) {
+        messageDiv.innerHTML = "<span style='color:red;'>Please enter a valid number.</span>";
+        return;
+      }
+
+      // Validate that the number is between 1 and 100
+      if (number < 1 || number > 100) {
+        messageDiv.innerHTML = "<span style='color:red;'>Number must be between 1 and 100.</span>";
+        return;
+      }
+
+      // Check if the number is 50 (winning number)
+      if (number === 50) {
+        messageDiv.innerHTML = "<span style='color:green;'>Congratulations! You won!</span>";
+        // Trigger confetti animation
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      } else {
+        messageDiv.innerHTML = "<span style='color:blue;'>Try again!</span>";
+      }
+      
+      // Bonus: Clear the input after 5 seconds
+      setTimeout(() => {
+        inputField.value = "";
+        messageDiv.innerHTML = "";
+      }, 5000);
+    }
+  </script>
+</head>
+<body>
+  <h1>Lucky Draw Game</h1>
+  <p>Enter a number between 1 and 100:</p>
+  <input type="text" id="numberInput" placeholder="1-100">
+  <button onclick="checkWinner()">Check Winner</button>
+  <div id="message" class="message"></div>
+</body>
+</html>
