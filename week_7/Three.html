@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -104,6 +104,75 @@
       }
     }
 
+    window.onload = loadQuestion;
+  </script>
+</head>
+<body>
+  <h1>Online Quiz Challenge</h1>
+  <div id="quiz">
+    <p id="timer" class="timer"></p>
+    <p id="question" class="question"></p>
+    <div id="options" class="options"></div>
+    <button onclick="checkAnswer()">Submit Answer</button>
+    <div id="message" class="message"></div>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Online Quiz Challenge</title>
+  <style>
+    body {font-family: Arial, sans-serif; text-align: center; margin-top: 50px;}
+    .question {font-size: 1.2em; margin-bottom: 15px;}
+    .options label {display: block; margin: 5px 0;}
+    .message {font-size: 1.2em; margin-top: 20px;}
+    .timer {font-weight: bold; color: red; margin-bottom: 10px;}
+  </style>
+  <script>
+    let questions = [
+      {question:"What is the capital of France?", options:["Berlin","Madrid","Paris","Rome"], correct:2},
+      {question:"Which planet is known as the Red Planet?", options:["Earth","Mars","Jupiter","Venus"], correct:1},
+      {question:"What is 5 + 7?", options:["10","12","14","16"], correct:1}
+    ], currentQuestion = 0, timer;
+    
+    function loadQuestion() {
+      clearInterval(timer);
+      document.getElementById("message").innerHTML = "";
+      let q = questions[currentQuestion];
+      document.getElementById("question").innerText = q.question;
+      let optionsHtml = "";
+      q.options.forEach((opt, i) => optionsHtml += `<label><input type="radio" name="answer" value="${i}"> ${opt}</label>`);
+      document.getElementById("options").innerHTML = optionsHtml;
+      let timeLeft = 10;
+      document.getElementById("timer").innerText = `Time left: ${timeLeft}s`;
+      timer = setInterval(() => {
+        if (--timeLeft === 0) { clearInterval(timer); checkAnswer(); }
+        document.getElementById("timer").innerText = `Time left: ${timeLeft}s`;
+      }, 1000);
+    }
+    
+    function checkAnswer() {
+      clearInterval(timer);
+      let selected = document.querySelector('input[name="answer"]:checked'),
+          m = document.getElementById("message");
+      if (!selected) { m.innerHTML = "<span style='color:red;'>Please select an answer!</span>"; return; }
+      if (parseInt(selected.value) === questions[currentQuestion].correct) {
+        m.innerHTML = "<span style='color:green;'>Correct! Well done!</span>";
+        setTimeout(nextQuestion, 2000);
+      } else {
+        m.innerHTML = "<span style='color:blue;'>Wrong answer! Try again.</span>";
+      }
+    }
+    
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < questions.length) loadQuestion();
+      else document.getElementById("quiz").innerHTML = "<h2>Quiz Completed! Well done!</h2>";
+    }
+    
     window.onload = loadQuestion;
   </script>
 </head>

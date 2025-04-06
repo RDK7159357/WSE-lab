@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -25,9 +25,9 @@
       font-size: 1.2em;
       margin-top: 20px;
     }
-  </style>
+  </style> -->
   <!-- Include a lightweight confetti library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
     function checkWinner() {
       const inputField = document.getElementById("numberInput");
@@ -75,6 +75,53 @@
   <h1>Lucky Draw Game</h1>
   <p>Enter a number between 1 and 100:</p>
   <input type="text" id="numberInput" placeholder="1-100">
+  <button onclick="checkWinner()">Check Winner</button>
+  <div id="message" class="message"></div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lucky Draw Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input { padding: 5px; font-size: 1em; width: 60px; text-align: center; }
+    button { padding: 5px 10px; font-size: 1em; margin-left: 10px; }
+    .message { font-size: 1.2em; margin-top: 20px; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    function checkWinner() {
+      let n = Number(document.getElementById("numberInput").value),
+          m = document.getElementById("message");
+      m.innerHTML = "";
+      if (isNaN(n)) {
+        m.innerHTML = "<span style='color:red;'>Please enter a valid number.</span>";
+        return;
+      }
+      if (n < 1 || n > 100) {
+        m.innerHTML = "<span style='color:red;'>Number must be between 1 and 100.</span>";
+        return;
+      }
+      if (n === 50) {
+        m.innerHTML = "<span style='color:green;'>Congratulations! You won!</span>";
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+      } else {
+        m.innerHTML = "<span style='color:blue;'>Try again!</span>";
+      }
+      setTimeout(() => {
+        document.getElementById("numberInput").value = "";
+        m.innerHTML = "";
+      }, 5000);
+    }
+  </script>
+</head>
+<body>
+  <h1>Lucky Draw Game</h1>
+  <p>Enter a number between 1 and 100:</p>
+  <input id="numberInput" placeholder="1-100">
   <button onclick="checkWinner()">Check Winner</button>
   <div id="message" class="message"></div>
 </body>
