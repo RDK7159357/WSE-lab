@@ -1,0 +1,23 @@
+To run this PHP file, you need to have a PHP server running. Here's how you can do it:
+
+1. **Ensure PHP is installed**:
+  - Open a terminal and type `php -v` to check if PHP is installed. If not, install PHP based on your operating system.
+
+2. **Navigate to the file's directory**:
+  ```bash
+  cd /Users/ramadugudhanush/Documents/WSE/WSE\ lab/week_9/php-api/
+  ```
+
+3. **Start a PHP built-in server**:
+  Run the following command to start a PHP server:
+  ```bash
+  php -S localhost:8000
+  ```
+
+4. **Access the file in your browser**:
+  Open your browser and go to:
+  ```
+  http://localhost:8000/session.php
+  ```
+
+This will execute the PHP file and display the JSON response.
