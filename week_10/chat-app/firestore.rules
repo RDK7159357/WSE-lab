@@ -18,8 +18,7 @@ service cloud.firestore {
       allow read: if isAuthenticated();
       
       // Allow creating rooms if authenticated and user sets themselves as creator
-      allow create: if isAuthenticated() && 
-                     request.resource.data.createdBy == request.auth.uid;
+      allow create: if isAuthenticated() ;
       
       // Allow updating rooms only by the creator
       allow update: if isAuthenticated() && 
