@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { useAuth } from '../../contexts/AuthContext';
 
 const ChatRoomForm = () => {
   const [roomName, setRoomName] = useState('');
+  const { user } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,7 +13,8 @@ const ChatRoomForm = () => {
     try {
       await addDoc(collection(db, 'rooms'), {
         name: roomName,
-        createdAt: new Date()
+        createdAt: new Date(),
+        createdBy: user.uid // Add the user's UID as createdBy
       });
 
       setRoomName('');
