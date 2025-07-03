@@ -400,7 +400,7 @@ const ChatApp = () => {
                     {new Date(message.timestamp).toLocaleTimeString()}
                   </span>
                   {message.edited && <span className="italic">(edited)</span>}
-                </div>
+                </div> 
                 <div className="bg-gray-50 p-3 rounded-lg">
                   {message.type === "text" ? (
                     <p>{message.text}</p>

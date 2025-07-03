@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="main-heading">Original Heading</h1>
+<button onclick="changeHeading()">Change Heading</button>
+
+<p>Time: <span id="clock"></span></p>
+
+<script>
+  function changeHeading() {
+    document.getElementById("main-heading").innerText = "New Heading!";
+  }
+
+  function updateTime() {
+    const now = new Date();
+    document.getElementById("clock").innerText = now.toLocaleTimeString();
+  }
+
+  setInterval(updateTime, 1000); // update every second
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-around;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      margin: 10px;
+    }
+    /* @media screen and (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      } */
+    /* } */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+  </div>
+  <button onclick = "togglelayout()">Toggle Layout</button>
+  <script>
+    function togglelayout(){
+        const container = document.querySelector('.container');
+        container.style.flexDirection = 
+            container.style.flexDirection === 'row' ? 'column' : 'row';
+    }
+
+  
+
+
+</script>
+</body>
+</html>

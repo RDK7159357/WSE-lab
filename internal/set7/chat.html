@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; }
+    .chat-box {
+      width: 300px; height: 400px;
+      background: white; border: 1px solid #ccc;
+      padding: 10px; overflow-y: scroll;
+    }
+    .message {
+      padding: 8px; margin: 5px 0;
+      background: #e1f5fe; border-radius: 5px;
+    }
+    .input-area {
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      width: 80%; padding: 5px;
+    }
+    button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Chat App</h2>
+<div class="chat-box">
+  <div class="message">User1: Hi!</div>
+  <div class="message">User2: Hello!</div>
+</div>
+
+<div class="input-area">
+  <input id ="in" type="text" placeholder="Type a message...">
+  <button>Send</button>
+</div>
+<script>
+    // const input = document.querySelector('.input-area input[type="text"]');
+    const input = document.getElementById('in');
+    const button = document.querySelector('.input-area button');
+    button.addEventListener('click', () => {
+      const message = input.value;
+      if (message) {
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('message');
+        newMessage.textContent = `User: ${message}`;
+        document.querySelector('.chat-box').appendChild(newMessage);
+        input.value = '';
+      }
+    });
+</script>
+</body>
+</html>

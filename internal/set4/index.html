@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #box {
+      width: 200px; height: 100px;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box">Click Button to Change Color</div>
+<button onclick="changeColor()">Change Color</button>
+
+<form onsubmit="return validateForm()">
+  Name: <input type="text" id="name"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  function validateForm() {
+    var x = document.getElementById("name").value;
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+    alert("Form submitted!");
+    return true;
+  }
+</script>
+
+<script>
+  function changeColor() {
+    document.getElementById('box').style.backgroundColor = "lightgreen";
+  }
+</script>
+
+</body>
+</html>
